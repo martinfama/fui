@@ -10,7 +10,7 @@ fui, standing for framebuffer user interface, is a C library for interacting wit
 
 ## Installation
 
-The actual librar is in `fui`, and can be compiled and installed with:
+The actual library is in `fui`, and can be compiled and installed with:
 
 ```bash
 make
