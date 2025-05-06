@@ -10,7 +10,8 @@
 extern atomic_bool taking_screenshot;
 
 void *_screenshot_region(void *args);
-void screenshot_region(const char *filename, framebuffer_t *fb, int32_t x, int32_t y, int32_t width, int32_t height);
+void screenshot_region(const char *filename, framebuffer_t *fb, int32_t x,
+                       int32_t y, int32_t width, int32_t height);
 void screenshot(const char *filename, framebuffer_t *fb);
 
 #endif

@@ -3,14 +3,14 @@
 
 #include "../events.h"
 typedef struct mouse_state {
-    int max_x;
-    int max_y;
-    int x;
-    int y;
-    int left;
-    int right;
-    int middle;
-    int scroll;
+  int max_x;
+  int max_y;
+  int x;
+  int y;
+  int left;
+  int right;
+  int middle;
+  int scroll;
 } mouse_state_t;
 
 extern mouse_state_t global_mouse_state;

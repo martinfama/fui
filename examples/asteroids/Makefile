@@ -12,3 +12,5 @@ $(TARGET): $(SRC)
 
 clean:
 	rm -f $(OBJ) $(TARGET)
+
+.PHONY: all clean

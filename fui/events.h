@@ -12,58 +12,58 @@
 #define MAX_POLL_FUNCTIONS 64
 
 typedef struct EmptyEvent {
-    uint64_t timestamp;
+  uint64_t timestamp;
 } EmptyEvent;
 
 typedef struct MouseClickEvent {
-    uint64_t timestamp;
-    int x;
-    int y;
-    int button;
+  uint64_t timestamp;
+  int x;
+  int y;
+  int button;
 } MouseClickEvent;
 
 typedef struct MouseMoveEvent {
-    uint64_t timestamp;
-    int dx;
-    int dy;
+  uint64_t timestamp;
+  int dx;
+  int dy;
 } MouseMoveEvent;
 
 typedef struct MouseScrollEvent {
-    uint64_t timestamp;
-    int value;
+  uint64_t timestamp;
+  int value;
 } MouseScrollEvent;
 
 typedef struct KeyboardEvent {
-    uint64_t timestamp;
-    int keycode;
-    int value; // 0 release, 1 press, 2 repeat
+  uint64_t timestamp;
+  int keycode;
+  int value; // 0 release, 1 press, 2 repeat
 } KeyboardEvent;
 
 typedef enum EventType {
-    EMPTY_EVENT,
-    MOUSE_CLICK_EVENT,
-    MOUSE_MOVE_EVENT,
-    MOUSE_SCROLL_EVENT,
-    KEYBOARD_EVENT,
+  EMPTY_EVENT,
+  MOUSE_CLICK_EVENT,
+  MOUSE_MOVE_EVENT,
+  MOUSE_SCROLL_EVENT,
+  KEYBOARD_EVENT,
 } EventType;
 
 typedef struct Event {
-    EventType type;
-    union {
-        EmptyEvent empty;
-        MouseClickEvent click;
-        MouseMoveEvent move;
-        MouseScrollEvent scroll;
-        KeyboardEvent keyboard;
-    } data;
+  EventType type;
+  union {
+    EmptyEvent empty;
+    MouseClickEvent click;
+    MouseMoveEvent move;
+    MouseScrollEvent scroll;
+    KeyboardEvent keyboard;
+  } data;
 } Event;
 
 typedef struct EventQueue {
-    Event *events;
-    int capacity;
-    int count;
-    int head;
-    int tail;
+  Event *events;
+  int capacity;
+  int count;
+  int head;
+  int tail;
 } EventQueue;
 
 typedef void (*EventHandler)(Event *event);
