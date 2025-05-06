@@ -229,10 +229,8 @@ void remove_layer(layer_list_t *list, int32_t index) {
     if (index < 0 || index >= list->count) {
         return;
     }
-    if (&list->layers[index] != NULL) {
-        free(list->layers[index].pixels);
-        list->layers[index].pixels = NULL;
-    }
+    free(list->layers[index].pixels);
+    list->layers[index].pixels = NULL;
     for (int i = index; i < list->count - 1; i++) {
         list->layers[i] = list->layers[i + 1];
     }

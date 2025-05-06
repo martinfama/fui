@@ -14,4 +14,5 @@ int32_t position_layer_location(layer_list_t *layer_list, int32_t x, int32_t y) 
             return index;
         }
     }
+    return -1;
 }

@@ -23,7 +23,6 @@ void draw_text(layer_t *layer, const char *text, int32_t x, int32_t y, float fon
     int32_t width, height, xoff, yoff;
 
     int32_t x_start = x;
-    int32_t y_start = y;
 
     for (int32_t i = 0; text[i] != '\0'; i++) {
         if (text[i] == '\n') {

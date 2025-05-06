@@ -1,6 +1,7 @@
 #include "input.h"
 #include <dirent.h>
 #include <fcntl.h>
+#include <linux/limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -24,7 +25,7 @@ char *get_keyboard_path() {
     }
 
     struct dirent *entry;
-    char path[256];
+    char path[PATH_MAX];
 
     while ((entry = readdir(dp))) {
         if (strncmp(entry->d_name, "event", 5) != 0)
@@ -63,7 +64,7 @@ char *get_mouse_path() {
     }
 
     struct dirent *entry;
-    char path[256];
+    char path[PATH_MAX];
 
     while ((entry = readdir(dp))) {
         if (strncmp(entry->d_name, "event", 5) != 0)

@@ -3,6 +3,14 @@
 #include <libevdev-1.0/libevdev/libevdev.h>
 #include <unistd.h>
 
+EventHandler event_handlers[MAX_EVENT_TYPES];
+PollFunction poll_functions[MAX_POLL_FUNCTIONS];
+
+int poll_function_count = 0;
+pthread_mutex_t poll_mutex = PTHREAD_MUTEX_INITIALIZER;
+bool running_poll_thread = true;
+pthread_t poll_thread;
+
 bool init_event_queue(EventQueue *event_queue, int capacity) {
     event_queue->events = (Event *)malloc(capacity * sizeof(Event));
     if (event_queue->events == NULL) {
@@ -97,8 +105,6 @@ void register_poll_function(PollFunction func) {
         poll_functions[poll_function_count++] = func;
 }
 
-static bool running_poll_thread = true;
-static pthread_t poll_thread;
 void *poll_loop(void *arg) {
     EventQueue *event_queue = (EventQueue *)arg;
     while (running_poll_thread) {

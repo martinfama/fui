@@ -69,11 +69,6 @@ typedef struct EventQueue {
 typedef void (*EventHandler)(Event *event);
 typedef void (*PollFunction)(EventQueue *event_queue);
 
-static EventHandler event_handlers[MAX_EVENT_TYPES];
-static PollFunction poll_functions[MAX_POLL_FUNCTIONS];
-static int poll_function_count = 0;
-static pthread_mutex_t poll_mutex = PTHREAD_MUTEX_INITIALIZER;
-
 bool init_event_queue(EventQueue *event_queue, int capacity);
 void destroy_event_queue(EventQueue *event_queue);
 void push_event(EventQueue *event_queue, Event *event);

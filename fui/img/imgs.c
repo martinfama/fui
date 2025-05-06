@@ -22,7 +22,6 @@ void *_screenshot_region(void *args) {
     ScreenshotArgs *screenshot_args = (ScreenshotArgs *)args;
     stbi_write_png(screenshot_args->filename, screenshot_args->width, screenshot_args->height, 4,
                    screenshot_args->pixels, screenshot_args->line_length_pixels * 4);
-    FILE *file = fopen(screenshot_args->filename, "r");
     free(screenshot_args->pixels);
     free(screenshot_args);
     atomic_store(&taking_screenshot, false);
