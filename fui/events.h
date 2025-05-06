@@ -78,7 +78,7 @@ void register_event_handler(EventType type, EventHandler handler);
 void process_event_queue(EventQueue *event_queue);
 void register_poll_function(PollFunction func);
 void *poll_loop(void *arg);
-void start_polling();
+void start_polling(EventQueue *event_queue);
 void stop_polling();
 void cleanup_polling();
 

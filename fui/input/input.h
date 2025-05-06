@@ -7,7 +7,9 @@
 
 int is_keyboard(struct libevdev *dev);
 int is_mouse(struct libevdev *dev);
+int is_touchpad(struct libevdev *dev);
 char *get_keyboard_path();
 char *get_mouse_path();
+char *get_touchpad_path();
 
 #endif // __INPUT_H__

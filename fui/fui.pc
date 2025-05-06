@@ -1,0 +1,10 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include/fui
+
+Name: fui
+Description: Draw graphics on framebuffer devices 
+Version: 1.0.0
+Libs: -L${libdir} -lfui -levdev -lm -lasound
+Cflags: -I${includedir}

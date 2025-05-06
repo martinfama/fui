@@ -1,9 +1,6 @@
 CC = gcc
-CFLAGS = -Wall
-LDFLAGS = -l:libfui.a -lm -levdev -lasound
-INCLUDE_FLAGS := -I/usr/local/include/fui
-
-CFLAGS += $(INCLUDE_FLAGS)
+CFLAGS = -Wall $(shell pkg-config --cflags fui)
+LDFLAGS = $(shell pkg-config --libs fui)
 
 SRC = main.c asteroids.c player.c
 TARGET = main

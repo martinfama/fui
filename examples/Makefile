@@ -1,18 +1,22 @@
 CC = gcc
-CFLAGS = -Wall
-LDFLAGS = -Lfui -l:libfui.a -lm -levdev
+CFLAGS = -Wall $(shell pkg-config --cflags fui)
+LDFLAGS = $(shell pkg-config --libs fui)
 
-INCLUDE_DIRS := $(shell find fui -type f -name '*.h' -exec dirname {} \; | sort -u)
-INCLUDE_FLAGS := $(foreach dir,$(INCLUDE_DIRS),-I$(dir))
-CFLAGS += $(INCLUDE_FLAGS)
+SRC_MAIN = main.c
+TARGET_MAIN = main
+SRC_BODIES = bodies.c
+TARGET_BODIES = bodies
 
-SRC = main.c
-TARGET = main
+all: $(TARGET_MAIN) $(TARGET_BODIES)
 
-all: $(TARGET)
+$(TARGET_MAIN): $(SRC_MAIN)
+	$(CC) -g $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
-$(TARGET): $(SRC)
+$(TARGET_BODIES): $(SRC_BODIES)
 	$(CC) -g $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
 clean:
-	rm -f $(OBJ) $(TARGET)
+	rm -f $(TARGET_MAIN)
+	rm -f $(TARGET_BODIES)
+
+.PHONY: all clean

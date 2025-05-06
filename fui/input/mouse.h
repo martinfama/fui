@@ -15,7 +15,7 @@ typedef struct mouse_state {
 
 extern mouse_state_t global_mouse_state;
 
-void init_mouse();
+void init_mouse(int max_x, int max_y);
 void cleanup_mouse();
 void poll_mouse_events(EventQueue *event_queue);
 void on_mouse_click(Event *event);
