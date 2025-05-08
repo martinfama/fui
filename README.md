@@ -25,7 +25,7 @@ Since both the video and input access needs root privileges, it is recommended t
 
 ```bash
 sudo usermod -a -G video $USER
-sudo usermode -a -G input $USER
+sudo usermod -a -G input $USER
 ```
 
 You'll need to logout and log back in after this. If that doesn't work, a reboot should do it.
