@@ -17,7 +17,18 @@ make
 sudo make install
 ```
 
-The library can then be used by including `-Lfui -l:libfui.a` in your compiler flags. The library is statically linked, so you don't need to worry about shared libraries.  
+The library can then be used by including `-Lfui -l:libfui.a` in your compiler flags. The library is statically linked, so you don't need to worry about shared libraries.
+
+## Permissions
+
+Since both the video and input access needs root privileges, it is recommended to add the user to these groups, to avoid running any compiled program with sudo. You can do this with:
+
+```bash
+sudo usermod -a -G video $USER
+sudo usermode -a -G input $USER
+```
+
+You'll need to logout and log back in after this. If that doesn't work, a reboot should do it.
 
 ## Examples
 
