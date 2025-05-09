@@ -25,11 +25,11 @@ lib/$(LIBNAME): $(OBJ)
 	$(CC) -g $(CFLAGS) $(LFLAGS) -c $< -o $@
 
 install: lib/$(LIBNAME)
-	mkdir -p $(LIBDIR) $(INCLUDEDIR)
+	mkdir -p $(LIBDIR) $(INCLUDEDIR) $(PKGCONFIGDIR)
 	install -m 644 lib/$(LIBNAME) $(LIBDIR)
 	@$(foreach file, $(HEADERS), install -D $(file) $(INCLUDEDIR)/$(file);)
 	install -m 644 $(PKGCONFIGFILE) $(PKGCONFIGDIR)
-	@echo "Add $(PKGCONFIGDIR) to PKG_CONFIG_PATH to use pkg-config."
+	@echo "Add $(PKGCONFIGDIR) to PKG_CONFIG_PATH to use pkg-config. Run: export PKG_CONFIG_PATH=$(PKGCONFIGDIR):\$$PKG_CONFIG_PATH"
 
 uninstall:
 	@echo "Uninstalling $(LIBNAME) from $(LIBDIR), headers from $(INCLUDEDIR), and pkg-config file from $(PKGCONFIGDIR)..."
