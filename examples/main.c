@@ -4,7 +4,7 @@
 #include "fui/fbi.h"
 #include "fui/fonts.h"
 #include "fui/geometry/regions.h"
-#include "fui/img/imgs.h"
+#include "fui/img/screenshot.h"
 #include "fui/input/keyboard.h"
 #include "fui/input/mouse.h"
 #include "fui/primitives.h"

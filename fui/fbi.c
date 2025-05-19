@@ -143,7 +143,24 @@ void draw_pixel(layer_t *layer, int x, int y, uint32_t color) {
   if (x < 0 || x >= layer->width || y < 0 || y >= layer->height) {
     return;
   }
-  layer->pixels[y * layer->width + x] = color;
+  if ((color >> 24) == 0xFF) {
+    layer->pixels[y * layer->width + x] = color;
+    return;
+  }
+  uint32_t existing_color = layer->pixels[y * layer->width + x];
+  uint8_t alpha = (color >> 24) & 0xFF;
+  uint8_t r = (color >> 16) & 0xFF;
+  uint8_t g = (color >> 8) & 0xFF;
+  uint8_t b = color & 0xFF;
+  uint8_t existing_r = (existing_color >> 16) & 0xFF;
+  uint8_t existing_g = (existing_color >> 8) & 0xFF;
+  uint8_t existing_b = existing_color & 0xFF;
+  uint8_t new_r = (r * alpha + existing_r * (255 - alpha)) / 255;
+  uint8_t new_g = (g * alpha + existing_g * (255 - alpha)) / 255;
+  uint8_t new_b = (b * alpha + existing_b * (255 - alpha)) / 255;
+
+  layer->pixels[y * layer->width + x] =
+      (0xFF << 24) | (new_r << 16) | (new_g << 8) | new_b;
 }
 
 void create_layer_list(layer_list_t **list) {

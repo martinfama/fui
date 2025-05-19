@@ -1,6 +1,6 @@
 PREFIX = /usr/local
 LIBDIR = $(PREFIX)/lib
-INCLUDEDIR = $(PREFIX)/include/fui
+INCLUDEDIR = $(PREFIX)/include
 PKGCONFIGDIR = $(PREFIX)/lib/pkgconfig
 PKGCONFIGFILE = fui.pc
 
@@ -34,7 +34,7 @@ install: lib/$(LIBNAME)
 uninstall:
 	@echo "Uninstalling $(LIBNAME) from $(LIBDIR), headers from $(INCLUDEDIR), and pkg-config file from $(PKGCONFIGDIR)..."
 	rm -f $(LIBDIR)/$(LIBNAME)
-	rm -f $(shell find $(INCLUDEDIR) -type f -name '*.h')
+	rm -rf $(INCLUDEDIR)/fui
 	rm -f $(PKGCONFIGDIR)/$(PKGCONFIGFILE)
 	@echo "Uninstall complete."
 

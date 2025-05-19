@@ -84,10 +84,10 @@ void *play_melody_thread(void *arg) {
 
   while (true) {
     int random_index = rand() % 8;
-    float note = CMajor.notes[random_index];
+    float note = CMinor.notes[random_index];
     play_sine_note(note, 0.25);
     random_index = rand() % 4;
-    chord_t *chord = &CMajorChords.chords[random_index];
+    chord_t *chord = &CMinorChords.chords[random_index];
     play_sine_chord(chord->notes, 3, 0.25);
   }
   return NULL;
